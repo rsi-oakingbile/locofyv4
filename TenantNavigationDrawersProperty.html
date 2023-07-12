@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+    <link rel="stylesheet" href="./global.css" />
+    <link rel="stylesheet" href="./TenantNavigationDrawersProperty.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Font Awesome 6 Pro:wght@300;400&display=swap"
+    />
+  </head>
+  <body>
+    <div class="tenant-navigation-drawers-pr" data-animate-on-scroll>
+      <div class="property-drawer">
+        <div class="property-drawer-child"></div>
+        <div class="scrollable-pane">
+          <div class="navigation-stack">
+            <div class="single-item">
+              <div class="batches">Batches</div>
+              <div class="div68"></div>
+            </div>
+            <div class="navigation-stack-child"></div>
+            <div class="single-item">
+              <div class="batches">Deposits</div>
+              <div class="div68"></div>
+            </div>
+            <div class="navigation-stack-child"></div>
+            <div class="group1">
+              <div class="entity-management">Entity Management</div>
+              <div class="create-entity">
+                <div class="create-asset">Create Asset</div>
+                <div class="div70"></div>
+              </div>
+              <div class="create-asset1">
+                <div class="create-asset">Create Entity</div>
+                <div class="div70"></div>
+              </div>
+            </div>
+            <div class="navigation-stack-child"></div>
+            <div class="single-item">
+              <div class="batches">Form Entry</div>
+              <div class="div68"></div>
+            </div>
+            <div class="navigation-stack-child"></div>
+            <div class="single-item">
+              <div class="batches">Work</div>
+              <div class="div68"></div>
+            </div>
+          </div>
+        </div>
+        <div class="chip-active">
+          <div class="recently-used">Recently Used</div>
+        </div>
+        <div class="chip-active1">
+          <div class="recently-used">Alpha Order</div>
+        </div>
+        <div class="input-field2">
+          <div class="search-field2"></div>
+          <div class="start-typing-frame">
+            <div class="start-typing2">Filter apps</div>
+          </div>
+        </div>
+      </div>
+      <div class="blue-nav-bar2">
+        <div class="main-navigation2">
+          <button class="property-module2" id="drawerpropertyModule">
+            <div class="property-module-inner"></div>
+            <div class="div74"></div>
+            <div class="property2">Property</div>
+            <img
+              class="property-module-shield2"
+              alt=""
+              src="./public/property-module-shield.svg"
+            />
+          </button>
+          <button class="revenue-module2">
+            <div class="revenue-module-inner"></div>
+            <div class="revenue4">Revenue</div>
+            <img
+              class="property-module-shield2"
+              alt=""
+              src="./public/revenue-modulestatic1.svg"
+            />
+          </button>
+          <button class="adv-search-button2">
+            <div class="adv-search-button-inner"></div>
+            <div class="div75"></div>
+          </button>
+          <button class="dashboard-button2">
+            <div class="dashboard-button-inner"></div>
+            <div class="div76"></div>
+          </button>
+          <img
+            class="rev-x-logo-svg2"
+            alt=""
+            src="./public/rev-x-logo-svg1.svg"
+          />
+        </div>
+        <button class="bookmarks-button2">
+          <div class="dashboard-button-inner"></div>
+          <div class="div77"></div>
+        </button>
+      </div>
+    </div>
+
+    <script>
+      var drawerpropertyModule = document.getElementById("drawerpropertyModule");
+      if (drawerpropertyModule) {
+        drawerpropertyModule.addEventListener("click", function (e) {
+          var popup = e.currentTarget.parentNode;
+          function isOverlay(node) {
+            return !!(
+              node &&
+              node.classList &&
+              node.classList.contains("popup-overlay")
+            );
+          }
+          while (popup && !isOverlay(popup)) {
+            popup = popup.parentNode;
+          }
+          if (isOverlay(popup)) {
+            popup.style.display = "none";
+          }
+        });
+      }
+      
+      var scrollAnimElements = document.querySelectorAll("[data-animate-on-scroll]");
+      var observer = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting || entry.intersectionRatio > 0) {
+              const targetElement = entry.target;
+              targetElement.classList.add("animate");
+              observer.unobserve(targetElement);
+            }
+          }
+        },
+        {
+          threshold: 0.15,
+        }
+      );
+      
+      for (let i = 0; i < scrollAnimElements.length; i++) {
+        observer.observe(scrollAnimElements[i]);
+      }
+      </script>
+  </body>
+</html>
